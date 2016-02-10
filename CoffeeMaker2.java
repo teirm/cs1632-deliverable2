@@ -29,9 +29,12 @@ public class CoffeeMaker2 {
 
 		while (keep_going) {
 
-			System.out.printf(" INSTRUCTIONS (N, S, L, I, H, D) >\n");		
+			System.out.printf(" INSTRUCTIONS (N, S, L, I, H, D) >\n\n");		
+
+			display_room(current_pos, game_states);
 
 			user_input = sc.nextLine();
+			user_input = user_input.toUpperCase();	
 			input_sat = check_input(user_input);	
 		
 			if (input_sat == false) {
@@ -62,12 +65,29 @@ public class CoffeeMaker2 {
 						"You are a brave student trying to study for finals, but you need caffeine.\n" + 
 						"The goal of the game is to collect sugar, coffee, and cream so that you can study.\n");
 				} else {
-					System.out.printf("You drank what you found.\n Congratulations it was Toluene!\nGood Bye\n");
+					System.out.printf("You drank what you found.\nCongratulations it was Toluene!\nGood Bye\n");
 					keep_going = false;
 				}
 			}
 		
 		}
+
+	}
+
+	public static void display_room(int curr_pos, MyDumbRoom[] states) {
+
+		MyDumbRoom curr_room = states[curr_pos];
+		
+		System.out.printf("You see a <ADJ> room.\nIt has a <ADJ> %s.\n", curr_room.getFurniture(), curr_room.getItem());
+
+		if (curr_room.getNorthDoor() != null) {
+			System.out.printf("A %s door leads North.\n", curr_room.getNorthDoor());
+		}
+
+		if (curr_room.getSouthDoor() != null) {
+			System.out.printf("A %s door leads South.\n", curr_room.getSouthDoor());
+		}		
+
 
 	}
 
@@ -77,7 +97,7 @@ public class CoffeeMaker2 {
 
 		if (!in.equals("N") && !in.equals("S") && 
 			!in.equals("L") && !in.equals("I") && 
-			!in.equals("D")) { out = false; }
+			!in.equals("H") && !in.equals("D")) { out = false; }
 		
 		return out;
 	}
@@ -103,12 +123,16 @@ public class CoffeeMaker2 {
 		MyDumbRoom room = new MyDumbRoom();
 
 		if (room_pos == 0) {
+			room.setNorthDoor("Chunky");
 			room.setFurniture("Start Table");
 			room.setItem("Milk");
 		} else if ( room_pos == total_rooms - 1) {
+			room.setSouthDoor("Shiny");	
 			room.setFurniture("End Table");
 			room.setItem("Rum");
 		} else {
+			room.setNorthDoor("Creamy");
+			room.setNorthDoor("Stalwart");
 			room.setFurniture("Coffee Table");
 			room.setItem("NONE");
 		}
