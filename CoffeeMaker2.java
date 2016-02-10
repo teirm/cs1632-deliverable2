@@ -65,7 +65,17 @@ public class CoffeeMaker2 {
 					System.out.printf("Searching room\n");
 					item = search_room(current_pos, game_states); 	
 					System.out.printf("Item: %s\n", item);			
-					if (item != null) inventory.add(item);
+					
+					if (item != null && !inventory.contains(item)) { 
+						inventory.add(item);
+						System.out.printf("You find some %s\n", item);
+					}
+					else if (inventory.contains(item)) {
+						System.out.printf("You find some %s\n", item);
+					}	
+					else {
+						System.out.printf("YOU HAVE NO COFFEE!\nYOU HAVE NO CREAM!\nYOU HAVE NO SUGAR!\n");
+					}
 
 				} else if (user_input.equals("I")) {
 					System.out.printf("Here is your inventory\n");
