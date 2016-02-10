@@ -53,9 +53,18 @@ public class CoffeeMaker2 {
 						current_pos--;
 						System.out.printf("CONTINUE\n");
 					}
+				} else if (user_input.equals("L")) {
+					System.out.printf("Searching room\n");
+				} else if (user_input.equals("I")) {
+					System.out.printf("Here is your inventory\n");
+				} else if (user_input.equals("H")) {
+					System.out.printf("Instructions for Coffee Maker Quest -\n" + 
+						"You are a brave student trying to study for finals, but you need caffeine.\n" + 
+						"The goal of the game is to collect sugar, coffee, and cream so that you can study.\n");
 				} else {
-					System.out.printf("Doing something else\n");
-				}	
+					System.out.printf("You drank what you found.\n Congratulations it was Toluene!\nGood Bye\n");
+					keep_going = false;
+				}
 			}
 		
 		}
