@@ -4,6 +4,7 @@ Purpose: Remake of CoffeeMakerQuest for CS1632
 Deliverable 2 */
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class CoffeeMaker2 {
 
@@ -14,14 +15,18 @@ public class CoffeeMaker2 {
 		boolean input_sat;
 		boolean keep_going;	
 		
-		String user_input;	
+		String user_input;
+		String item;
+
 		Scanner sc;	
-		MyDumbRoom[] game_states;		
+		MyDumbRoom[] game_states;
+		ArrayList<String> inventory;			
 
 		current_pos = 0;
 		total_states = 6;
 		keep_going = true;
 
+		inventory = new ArrayList<String>(); 
 		sc = new Scanner(System.in);
 		game_states = init_game(total_states);	
 
@@ -58,8 +63,13 @@ public class CoffeeMaker2 {
 					}
 				} else if (user_input.equals("L")) {
 					System.out.printf("Searching room\n");
+					item = search_room(current_pos, game_states); 	
+					System.out.printf("Item: %s\n", item);			
+					if (item != null) inventory.add(item);
+
 				} else if (user_input.equals("I")) {
 					System.out.printf("Here is your inventory\n");
+					System.out.println(inventory);	
 				} else if (user_input.equals("H")) {
 					System.out.printf("Instructions for Coffee Maker Quest -\n" + 
 						"You are a brave student trying to study for finals, but you need caffeine.\n" + 
@@ -74,11 +84,18 @@ public class CoffeeMaker2 {
 
 	}
 
+	public static String search_room(int curr_pos, MyDumbRoom[] states) {
+
+		MyDumbRoom curr_room = states[curr_pos];
+		return curr_room.getItem();
+	
+	}
+
 	public static void display_room(int curr_pos, MyDumbRoom[] states) {
 
 		MyDumbRoom curr_room = states[curr_pos];
 		
-		System.out.printf("You see a <ADJ> room.\nIt has a <ADJ> %s.\n", curr_room.getFurniture(), curr_room.getItem());
+		System.out.printf("You see a <ADJ> room.\nIt has a <ADJ> %s.\n", curr_room.getFurniture());
 
 		if (curr_room.getNorthDoor() != null) {
 			System.out.printf("A %s door leads North.\n", curr_room.getNorthDoor());
@@ -134,7 +151,6 @@ public class CoffeeMaker2 {
 			room.setNorthDoor("Creamy");
 			room.setNorthDoor("Stalwart");
 			room.setFurniture("Coffee Table");
-			room.setItem("NONE");
 		}
 
 		return room;
