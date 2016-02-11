@@ -87,13 +87,13 @@ public class CoffeeMaker2 {
 
 	}
 
-	public static boolean move_north(current_pos, total_states) {
+	public static boolean move_north(int current_pos, int total_states) {
 
 		return current_pos + 1 < total_states;
 	
 	}
 
-	public static boolean move_south(current_pos) {
+	public static boolean move_south(int current_pos) {
 		
 		return current_pos - 1 >= 0;
 	
