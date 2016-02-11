@@ -243,10 +243,14 @@ public class CoffeeMaker2 {
 			room.setNorthDoor("Chunky");
 			room.setFurniture("Start Table");
 			room.setItem("Milk");
-		} else if ( room_pos == total_rooms - 1) {
+		} else if (room_pos == total_rooms / 2) {
+			room.setNorthDoor("Chobobo-ee");
+			room.setFurniture("Chocobo Stable");
+			room.setItem("Coffee");	
+		} else if (room_pos == total_rooms - 1) {
 			room.setSouthDoor("Shiny");	
 			room.setFurniture("End Table");
-			room.setItem("Rum");
+			room.setItem("Sugar");
 		} else {
 			room.setNorthDoor("Creamy");
 			room.setNorthDoor("Stalwart");
