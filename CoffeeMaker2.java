@@ -62,7 +62,6 @@ public class CoffeeMaker2 {
 				} else if (user_input.equals("L")) {
 					System.out.printf("Searching room\n");
 					item = search_room(current_pos, game_states); 	
-					System.out.printf(": %s\n", item);			
 					
 					if (item == null) { 
 						System.out.printf("You don't see anything out of the ordinary.\n");
@@ -242,7 +241,7 @@ public class CoffeeMaker2 {
 		if (room_pos == 0) {
 			room.setNorthDoor("Chunky");
 			room.setFurniture("Start Table");
-			room.setItem("Milk");
+			room.setItem("Cream");
 		} else if (room_pos == total_rooms / 2) {
 			room.setNorthDoor("Chobobo-ee");
 			room.setFurniture("Chocobo Stable");
