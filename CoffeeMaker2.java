@@ -12,6 +12,8 @@ public class CoffeeMaker2 {
 
 		int current_pos;
 		int total_states;
+		int bag_status;
+
 		boolean input_sat;
 		boolean keep_going;	
 		
@@ -45,7 +47,6 @@ public class CoffeeMaker2 {
 			if (input_sat == false) {
 				System.out.printf("What?\n");
 			} else {
-				System.out.printf("Totes Good.\n");
 			
 				if (user_input.equals("N")) {
 					
@@ -74,17 +75,23 @@ public class CoffeeMaker2 {
 					}
 
 				} else if (user_input.equals("I")) {
-					display_inventory(inventory);			
+					bag_status = display_inventory(inventory);			
 				} else if (user_input.equals("H")) {
 					display_instructions();	
 				} else {
-					System.out.printf("You drank what you found.\nCongratulations it was Toluene!\nGood Bye\n");
-					keep_going = false;
+					bag_status = display_inventory(inventory);
+					process_bag(bag_status);
 				}
 			}
 		
 		}
 
+	}
+
+	public static int process_bag(int bag_status) {
+
+	
+		return 0;	
 	}
 
 	public static boolean move_north(int current_pos, int total_states) {
@@ -99,25 +106,34 @@ public class CoffeeMaker2 {
 	
 	}
 
-	public static void display_inventory(ArrayList<String> inv) {
+	public static int display_inventory(ArrayList<String> inv) {
+
+		int has_coffee = 0x000;
+		int has_cream = 0x000;
+		int has_sugar = 0x000;
 
 		if (inv.contains("Coffee")) {
 			System.out.printf("You have a cup of delicious coffee.\n");
+			has_coffee = 0x001;	
 		} else {
 			System.out.printf("YOU HAVE NO COFFEE!\n");
 		}
 
 		if (inv.contains("Cream")) {
 			System.out.printf("You have some fresh cream.\n");
+			has_cream = 0x002;	
 		} else {
 			System.out.printf("YOU HAVE NO CREAM!\n");
 		}
 
 		if (inv.contains("Sugar")) {
 			System.out.printf("You have some tasy sugar.\n");
+			has_sugar = 0x004;	
 		} else {
 			System.out.printf("YOU HAVE NO SUGAR\n");
 		}
+
+		return has_coffee | has_cream | has_sugar;
 	}	
 
 
