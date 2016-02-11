@@ -52,12 +52,10 @@ public class CoffeeMaker2 {
 				if (user_input.equals("N")) {
 					
 					if (move_north(current_pos, total_states)) current_pos++;
-					else System.out.printf("YOU SHALL NOT PASS\n");	
 				
 				} else if (user_input.equals("S")) {
 					
 					if (move_south(current_pos)) current_pos--;
-					else System.out.printf("YOU SHALL NOT PASS\n");		
 				
 				} else if (user_input.equals("L")) {
 					System.out.printf("Searching room\n");
@@ -204,7 +202,7 @@ public class CoffeeMaker2 {
 
 		Room curr_room = states[curr_pos];
 		
-		System.out.printf("\nYou see a <ADJ> room.\nIt has a <ADJ> %s.\n", curr_room.getFurniture());
+		System.out.printf("\nYou see a %s room.\nIt has a %s.\n", curr_room.getRoomAdj(), curr_room.getFurniture());
 
 		if (curr_room.getNorthDoor() != null) {
 			System.out.printf("A %s door leads North.\n", curr_room.getNorthDoor());

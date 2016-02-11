@@ -30,7 +30,7 @@ public class Room {
 
 
 	//getters
-	public String getRoomAdj(String s) {
+	public String getRoomAdj() {
 		return roomAdj;
 	}	
 	
