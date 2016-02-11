@@ -37,10 +37,10 @@ public class CoffeeMaker2 {
 
 		while (keep_going) {
 
-			System.out.printf(" INSTRUCTIONS (N, S, L, I, H, D) >\n\n");		
-
 			display_room(current_pos, game_states);
 
+			System.out.printf("\n INSTRUCTIONS (N, S, L, I, H, D) >\n");		
+			
 			user_input = sc.nextLine();
 			user_input = user_input.toUpperCase();	
 			input_sat = check_input(user_input);	
@@ -80,6 +80,7 @@ public class CoffeeMaker2 {
 					display_instructions();	
 				} else {
 					bag_status = display_inventory(inventory);
+					System.out.printf("\n");	
 					win_status = process_bag(bag_status);
 
 					if (win_status == 0) System.out.printf("You Lose!\n");
@@ -100,25 +101,25 @@ public class CoffeeMaker2 {
 		switch (bag_status) {
 			case 0:
 				System.out.printf("You drink the air, as you have no coffee, sugar, or cream.\n" +
-						"The air is invigorating, but not invigorating enough.  You cannot study\n");
+						"The air is invigorating, but not invigorating enough.  You cannot study.\n");
 				break;
 			case 1:
-				System.out.printf("Without cream, you get an unlcer and cannot study\n");
+				System.out.printf("Without cream, you get an unlcer and cannot study.\n");
 				break;
 			case 2:
-				System.out.printf("You drink the cream, but without caffeine, you cannot study\n");
+				System.out.printf("You drink the cream, but without caffeine, you cannot study.\n");
 				break;	
 			case 3:
 				System.out.printf("Without sugar, the coffee is too bitter.  You cannot study.\n");
 				break;
 			case 4:
-				System.out.printf("You eat the sugar, but without caffeine, you cannot study\n");
+				System.out.printf("You eat the sugar, but without caffeine, you cannot study.\n");
 				break;
 			case 5:
-				System.out.printf("Without cream, you get an unlcer and cannot study\n");
+				System.out.printf("Without cream, you get an unlcer and cannot study.\n");
 				break;
 			case 6:
-				System.out.printf("You drink the sweetened cream, but without caffeine, you cannot study\n");
+				System.out.printf("You drink the sweetened cream, but without caffeine, you cannot study.\n");
 				break;		
 			case 7:
 				System.out.printf("You Drink the beverage and are ready to study!\n");
@@ -145,6 +146,15 @@ public class CoffeeMaker2 {
 	
 	}
 
+	/* Each item is represented by a bit value:
+		
+		coffee: 001
+		cream: 010
+	    sugar: 100
+		
+		Bitwise OR of these values affords all
+		items combinations 	
+	*/
 	public static int display_inventory(ArrayList<String> inv) {
 
 		int has_coffee = 0x000;
@@ -194,7 +204,7 @@ public class CoffeeMaker2 {
 
 		MyDumbRoom curr_room = states[curr_pos];
 		
-		System.out.printf("You see a <ADJ> room.\nIt has a <ADJ> %s.\n", curr_room.getFurniture());
+		System.out.printf("\nYou see a <ADJ> room.\nIt has a <ADJ> %s.\n", curr_room.getFurniture());
 
 		if (curr_room.getNorthDoor() != null) {
 			System.out.printf("A %s door leads North.\n", curr_room.getNorthDoor());
@@ -203,8 +213,6 @@ public class CoffeeMaker2 {
 		if (curr_room.getSouthDoor() != null) {
 			System.out.printf("A %s door leads South.\n", curr_room.getSouthDoor());
 		}		
-
-
 	}
 
 	public static boolean check_input(String in) {
@@ -252,7 +260,7 @@ public class CoffeeMaker2 {
 			room.setItem("Sugar");
 		} else {
 			room.setNorthDoor("Creamy");
-			room.setNorthDoor("Stalwart");
+			room.setSouthDoor("Stalwart");
 			room.setFurniture("Coffee Table");
 		}
 
