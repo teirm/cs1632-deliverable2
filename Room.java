@@ -1,70 +1,53 @@
 public class Room {
+	
 	private String northDoor;
 	private String southDoor;
 	private String furniture;
 	private String item;
+	private String roomAdj;
+	
+	//setters
+
+	public void setRoomAdj(String s) {
+		this.roomAdj = s;
+	}
+
+	public void setNorthDoor(String s) {
+		this.northDoor = s;
+	}
+
+	public void setSouthDoor(String s) {
+		this.southDoor = s;
+	}
+
+	public void setFurniture(String s) {
+		this.furniture = s;
+	}
+
+	public void setItem(String s) {
+		this.item = s;
+	}
 
 
-	/* Potential methods: 
-		Constructor (could probably get away with default)
+	//getters
+	public String getRoomAdj(String s) {
+		return roomAdj;
+	}	
+	
+	public String getNorthDoor() {
+		return northDoor;
+	}
 
-		ADD ROOM ADJECTIVE
-		ADD FURNITURE WITH ADJECTIVE
-		ADD DOOR NORTH WITH ADJECTIVE
-		ADD DOOR SOUTH WITH ADJECTIVE
+	public String getSouthDoor() {
+		return southDoor;
+	}
 
-		GET ROOM DESCRIPTION
-		GET FURNITURE DESCRIPTION
-		GET NORTH DESCRIPTION
-		GET SOUTH DESCRIPTION
-	*/	
-		public Room() {
+	public String getFurniture() {
+		return furniture;
+	}
 
-		}
-
-
-		//setters
-
-		public void setNorthDoor(String s) {
-			this.northDoor = s;
-		}
-
-		public void setSouthDoor(String s) {
-			this.southDoor = s;
-		}
-
-		public void setFurniture(String s) {
-			this.furniture = s;
-		}
-
-		public void setItem(String s) {
-			this.item = s;
-		}
-
-
-		//getters
-		public String getNorthDoor() {
-			return northDoor;
-		}
-
-		public String getSouthDoor() {
-			return southDoor;
-		}
-
-		public String getFurniture() {
-			return furniture;
-		}
-
-		public String getItem() {
-			return item;
-		}
-
-
-
-
-
-
-
-
+	public String getItem() {
+		return item;
+	}
 
 }

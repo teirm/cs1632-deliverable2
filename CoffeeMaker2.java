@@ -22,7 +22,7 @@ public class CoffeeMaker2 {
 		String item;
 
 		Scanner sc;	
-		MyDumbRoom[] game_states;
+		Room[] game_states;
 		ArrayList<String> inventory;			
 
 		current_pos = 0;
@@ -193,16 +193,16 @@ public class CoffeeMaker2 {
 			"The goal of the game is to collect sugar, coffee, and cream so that you can study.\n");
 	}	
 
-	public static String search_room(int curr_pos, MyDumbRoom[] states) {
+	public static String search_room(int curr_pos, Room[] states) {
 
-		MyDumbRoom curr_room = states[curr_pos];
+		Room curr_room = states[curr_pos];
 		return curr_room.getItem();
 	
 	}
 
-	public static void display_room(int curr_pos, MyDumbRoom[] states) {
+	public static void display_room(int curr_pos, Room[] states) {
 
-		MyDumbRoom curr_room = states[curr_pos];
+		Room curr_room = states[curr_pos];
 		
 		System.out.printf("\nYou see a <ADJ> room.\nIt has a <ADJ> %s.\n", curr_room.getFurniture());
 
@@ -226,12 +226,12 @@ public class CoffeeMaker2 {
 		return out;
 	}
 			
-	public static MyDumbRoom[] init_game(int state_count) {
+	public static Room[] init_game(int state_count) {
 
 		int i;	
 		
-		MyDumbRoom game_room;
-		MyDumbRoom[] game_states = new MyDumbRoom[state_count];
+		Room game_room;
+		Room[] game_states = new Room[state_count];
 		
 		for (i = 0; i < state_count; i++) {
 			game_room = create_room(i, state_count);	
@@ -242,26 +242,44 @@ public class CoffeeMaker2 {
 	}
 
 
-	public static MyDumbRoom create_room(int room_pos, int total_rooms) {
+	public static Room create_room(int room_pos, int total_rooms) {
 
-		MyDumbRoom room = new MyDumbRoom();
+		int index;
 
+		Room room = new Room();
+
+		/* Take in 4-tuples: (room adj, furniture, north adj, south adj) */
+		/* "NONE" means that door does not exist for the given state */
+		String[] adj_furn_array = {"Small", "Quaint sofa", "Magenta", "NONE",
+									"Funny", "Sad record player", "Beige", "Massive",
+									"Refinanced", "Tight pizza", "Dead", "Smart",
+									"Dumb", "Flat energy drink", "Vivacious", "Slim",
+									"Bloodthirsty", "Beautiful bag of money", "Purple", "Sandy",
+									"Rough", "Perfect air hockey table", "NONE", "Minimalist"}; 
+
+		index = room_pos * 4;
+		
 		if (room_pos == 0) {
-			room.setNorthDoor("Chunky");
-			room.setFurniture("Start Table");
+			room.setRoomAdj(adj_furn_array[index + 0]);
+			room.setFurniture(adj_furn_array[index + 1]);
+			room.setNorthDoor(adj_furn_array[index + 2]);
 			room.setItem("Cream");
 		} else if (room_pos == total_rooms / 2) {
-			room.setNorthDoor("Chobobo-ee");
-			room.setFurniture("Chocobo Stable");
+			room.setRoomAdj(adj_furn_array[index + 0]);
+			room.setFurniture(adj_furn_array[index + 1]);
+			room.setNorthDoor(adj_furn_array[index + 2]);
+			room.setSouthDoor(adj_furn_array[index + 3]);	
 			room.setItem("Coffee");	
 		} else if (room_pos == total_rooms - 1) {
-			room.setSouthDoor("Shiny");	
-			room.setFurniture("End Table");
+			room.setRoomAdj(adj_furn_array[index + 0]);
+			room.setFurniture(adj_furn_array[index + 1]);
+			room.setSouthDoor(adj_furn_array[index + 3]);	
 			room.setItem("Sugar");
 		} else {
-			room.setNorthDoor("Creamy");
-			room.setSouthDoor("Stalwart");
-			room.setFurniture("Coffee Table");
+			room.setRoomAdj(adj_furn_array[index + 0]);
+			room.setFurniture(adj_furn_array[index + 1]);
+			room.setNorthDoor(adj_furn_array[index + 2]);
+			room.setSouthDoor(adj_furn_array[index + 3]);	
 		}
 
 		return room;
