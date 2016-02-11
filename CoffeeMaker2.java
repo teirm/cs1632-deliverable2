@@ -13,6 +13,7 @@ public class CoffeeMaker2 {
 		int current_pos;
 		int total_states;
 		int bag_status;
+		int win_status;
 
 		boolean input_sat;
 		boolean keep_going;	
@@ -80,7 +81,12 @@ public class CoffeeMaker2 {
 					display_instructions();	
 				} else {
 					bag_status = display_inventory(inventory);
-					process_bag(bag_status);
+					win_status = process_bag(bag_status);
+
+					if (win_status == 0) System.out.printf("You Lose!\n");
+					else System.out.printf("You win!\n");
+
+					keep_going = false;
 				}
 			}
 		
@@ -88,8 +94,9 @@ public class CoffeeMaker2 {
 
 	}
 
-	public static void process_bag(int bag_status) {
+	public static int process_bag(int bag_status) {
 
+		int status = 0;
 
 		switch (bag_status) {
 			case 0:
@@ -109,18 +116,21 @@ public class CoffeeMaker2 {
 				System.out.printf("You eat the sugar, but without caffeine, you cannot study\n");
 				break;
 			case 5:
-				
 				System.out.printf("Without cream, you get an unlcer and cannot study\n");
-
+				break;
 			case 6:
 				System.out.printf("You drink the sweetened cream, but without caffeine, you cannot study\n");
 				break;		
-			
 			case 7:
-				
+				System.out.printf("You Drink the beverage and are ready to study!\n");
+				status = 1;	
+				break;	
 			default:
-				System.out.printf("CATASTROPHIC FAILURE.  EXITTING\n");
-				break:	
+				System.out.printf("BROKEN\n");
+				break;
+		}
+
+		return status;	
 			
 	}
 
