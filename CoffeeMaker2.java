@@ -88,10 +88,40 @@ public class CoffeeMaker2 {
 
 	}
 
-	public static int process_bag(int bag_status) {
+	public static void process_bag(int bag_status) {
 
-	
-		return 0;	
+
+		switch (bag_status) {
+			case 0:
+				System.out.printf("You drink the air, as you have no coffee, sugar, or cream.\n" +
+						"The air is invigorating, but not invigorating enough.  You cannot study\n");
+				break;
+			case 1:
+				System.out.printf("Without cream, you get an unlcer and cannot study\n");
+				break;
+			case 2:
+				System.out.printf("You drink the cream, but without caffeine, you cannot study\n");
+				break;	
+			case 3:
+				System.out.printf("Without sugar, the coffee is too bitter.  You cannot study.\n");
+				break;
+			case 4:
+				System.out.printf("You eat the sugar, but without caffeine, you cannot study\n");
+				break;
+			case 5:
+				
+				System.out.printf("Without cream, you get an unlcer and cannot study\n");
+
+			case 6:
+				System.out.printf("You drink the sweetened cream, but without caffeine, you cannot study\n");
+				break;		
+			
+			case 7:
+				
+			default:
+				System.out.printf("CATASTROPHIC FAILURE.  EXITTING\n");
+				break:	
+			
 	}
 
 	public static boolean move_north(int current_pos, int total_states) {
