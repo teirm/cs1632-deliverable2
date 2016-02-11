@@ -1,7 +1,7 @@
 public class Room {
 	private String northDoor;
 	private String southDoor;
-	private String furnitureAdj;
+	private String furniture;
 	private String item;
 
 
@@ -43,10 +43,6 @@ public class Room {
 
 
 		//getters
-		public String getRoomAdj() {
-			return roomAdj;
-		}
-
 		public String getNorthDoor() {
 			return northDoor;
 		}
@@ -56,10 +52,10 @@ public class Room {
 		}
 
 		public String getFurniture() {
-			return furnitureAdj;
+			return furniture;
 		}
 
-		Public String getItem() {
+		public String getItem() {
 			return item;
 		}
 
