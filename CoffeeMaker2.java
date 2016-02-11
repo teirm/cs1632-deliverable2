@@ -48,42 +48,35 @@ public class CoffeeMaker2 {
 				System.out.printf("Totes Good.\n");
 			
 				if (user_input.equals("N")) {
-					if (current_pos + 1 >= total_states) {
-						System.out.printf("YOU SHALL NOT PASS\n");
-					} else {
-						current_pos++;
-						System.out.printf("CONTINUE\n");
-					}
+					
+					if (move_north(current_pos, total_states)) current_pos++;
+					else System.out.printf("YOU SHALL NOT PASS\n");	
+				
 				} else if (user_input.equals("S")) {
-					if (current_pos - 1 < 0 ) {
-						System.out.printf("YOU SHALL NOT PASS\n");
-					} else {
-						current_pos--;
-						System.out.printf("CONTINUE\n");
-					}
+					
+					if (move_south(current_pos)) current_pos--;
+					else System.out.printf("YOU SHALL NOT PASS\n");		
+				
 				} else if (user_input.equals("L")) {
 					System.out.printf("Searching room\n");
 					item = search_room(current_pos, game_states); 	
-					System.out.printf("Item: %s\n", item);			
+					System.out.printf(": %s\n", item);			
 					
-					if (item != null && !inventory.contains(item)) { 
+					if (item == null) { 
+						System.out.printf("You don't see anything out of the ordinary.\n");
+					} else if (inventory.contains(item)) {
+						System.out.printf("There might be something here...\n");
+						System.out.printf("You found some %s\n", item);
+					} else {
+						System.out.printf("There might be something here...\n");
+						System.out.printf("You found some %s\n", item);
 						inventory.add(item);
-						System.out.printf("You find some %s\n", item);
-					}
-					else if (inventory.contains(item)) {
-						System.out.printf("You find some %s\n", item);
-					}	
-					else {
-						System.out.printf("YOU HAVE NO COFFEE!\nYOU HAVE NO CREAM!\nYOU HAVE NO SUGAR!\n");
 					}
 
 				} else if (user_input.equals("I")) {
-					System.out.printf("Here is your inventory\n");
-					System.out.println(inventory);	
+					display_inventory(inventory);			
 				} else if (user_input.equals("H")) {
-					System.out.printf("Instructions for Coffee Maker Quest -\n" + 
-						"You are a brave student trying to study for finals, but you need caffeine.\n" + 
-						"The goal of the game is to collect sugar, coffee, and cream so that you can study.\n");
+					display_instructions();	
 				} else {
 					System.out.printf("You drank what you found.\nCongratulations it was Toluene!\nGood Bye\n");
 					keep_going = false;
@@ -93,6 +86,47 @@ public class CoffeeMaker2 {
 		}
 
 	}
+
+	public static boolean move_north(current_pos, total_states) {
+
+		return current_pos + 1 < total_states;
+	
+	}
+
+	public static boolean move_south(current_pos) {
+		
+		return current_pos - 1 >= 0;
+	
+	}
+
+	public static void display_inventory(ArrayList<String> inv) {
+
+		if (inv.contains("Coffee")) {
+			System.out.printf("You have a cup of delicious coffee.\n");
+		} else {
+			System.out.printf("YOU HAVE NO COFFEE!\n");
+		}
+
+		if (inv.contains("Cream")) {
+			System.out.printf("You have some fresh cream.\n");
+		} else {
+			System.out.printf("YOU HAVE NO CREAM!\n");
+		}
+
+		if (inv.contains("Sugar")) {
+			System.out.printf("You have some tasy sugar.\n");
+		} else {
+			System.out.printf("YOU HAVE NO SUGAR\n");
+		}
+	}	
+
+
+	public static void display_instructions() {
+
+		System.out.printf("Instructions for Coffee Maker Quest -\n" + 
+			"You are a brave student trying to study for finals, but you need caffeine.\n" + 
+			"The goal of the game is to collect sugar, coffee, and cream so that you can study.\n");
+	}	
 
 	public static String search_room(int curr_pos, MyDumbRoom[] states) {
 
