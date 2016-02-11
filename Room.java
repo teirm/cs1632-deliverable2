@@ -1,7 +1,6 @@
 public class Room {
-	private String roomAdj;
-	private String northDoorAdj;
-	private String southDoorAdj;
+	private String northDoor;
+	private String southDoor;
 	private String furnitureAdj;
 	private String item;
 
@@ -25,20 +24,17 @@ public class Room {
 
 
 		//setters
-		public void setRoomAdj(String s) {
-			this.roomAdj = s;
+
+		public void setNorthDoor(String s) {
+			this.northDoor = s;
 		}
 
-		public void setNorthDoorAdj(String s) {
-			this.northDoorAdj = s;
+		public void setSouthDoor(String s) {
+			this.southDoor = s;
 		}
 
-		public void setSouthDoorAdj(String s) {
-			this.southDoorAdj = s;
-		}
-
-		public void setFurnitureAdj(String s) {
-			this.furnitureAdj = s;
+		public void setFurniture(String s) {
+			this.furniture = s;
 		}
 
 		public void setItem(String s) {
@@ -51,15 +47,15 @@ public class Room {
 			return roomAdj;
 		}
 
-		public String getNorthDoorAdj() {
-			return northDoorAdj;
+		public String getNorthDoor() {
+			return northDoor;
 		}
 
-		public String getSouthDoorAdj() {
-			return southDoorAdj;
+		public String getSouthDoor() {
+			return southDoor;
 		}
 
-		public String getFurnitureAdj() {
+		public String getFurniture() {
 			return furnitureAdj;
 		}
 
