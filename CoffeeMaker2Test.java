@@ -3,6 +3,10 @@ Date: 12 February 2016
 Purpose: JUnit tests for CoffeMakerQuest2 
 */
 
+/* IMPORTANT: AT LEAST 3 TESTS NEED TO USE TEST DOUBLES
+   			  AT LEAST 3 TESTS NEED TO USE TEST STUBS
+			  */
+
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
