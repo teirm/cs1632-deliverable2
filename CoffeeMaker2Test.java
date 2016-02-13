@@ -51,7 +51,6 @@ public class CoffeeMaker2Test {
 
 	/* Entering anything besides 'N', 'S', 'L', 'I', 'H', 'D'
 	   returns false */
-
 	@Test
 	public void testInvalidInput() {
 		boolean invalid_input = CoffeeMaker2.check_input("Q");
@@ -62,7 +61,7 @@ public class CoffeeMaker2Test {
 	   element of valid input set returns false */
 	@Test
 	public void testInvalidString() {
-		boolean invalid_input = CoffeeMaker2.check_input("Stosszahlensatz");
+		boolean invalid_input = CoffeeMaker2.check_input("Zustandssumme");
 		assertEquals(false, invalid_input);
 	}	
 
@@ -70,8 +69,18 @@ public class CoffeeMaker2Test {
 	   element of the valid input set returns false */
 	@Test
 	public void testFirstCharString() {
-		boolean invalid_input = CoffeeMaker2.check_input("Narina");
+		boolean invalid_input = CoffeeMaker2.check_input("Daenerys");
 		assertEquals(false, invalid_input);
+	}
+
+	/* Entering a element of valid input set is case insensitive
+		and returns true */
+	@Test
+	public void testCaseInsensitivity() {
+		boolean input_UC = CoffeeMaker2.check_input("S");
+		boolean input_LC = CoffeeMaker2.check_input("s");
+
+		assertEquals(true,  input_UC & input_LC);
 	}
 
 	// This is a dummy test 
