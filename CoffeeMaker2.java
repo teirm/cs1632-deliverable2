@@ -42,7 +42,6 @@ public class CoffeeMaker2 {
 			System.out.printf("\n INSTRUCTIONS (N, S, L, I, H, D) >\n");		
 			
 			user_input = sc.nextLine();
-			user_input = user_input.toUpperCase();	
 			input_sat = check_input(user_input);	
 		
 			if (input_sat == false) {
@@ -217,6 +216,8 @@ public class CoffeeMaker2 {
 
 		boolean out = true;
 
+		in = in.toUpperCase();
+
 		if (!in.equals("N") && !in.equals("S") && 
 			!in.equals("L") && !in.equals("I") && 
 			!in.equals("H") && !in.equals("D")) { out = false; }
@@ -232,7 +233,8 @@ public class CoffeeMaker2 {
 		Room[] game_states = new Room[state_count];
 		
 		for (i = 0; i < state_count; i++) {
-			game_room = create_room(i, state_count);	
+			game_room = new Room();	
+			create_room(i, state_count, game_room);
 			game_states[i] = game_room;	
 		}
 	
@@ -240,11 +242,9 @@ public class CoffeeMaker2 {
 	}
 
 
-	public static Room create_room(int room_pos, int total_rooms) {
+	public static int create_room(int room_pos, int total_rooms, Room room) {
 
 		int index;
-
-		Room room = new Room();
 
 		/* Take in 4-tuples: (room adj, furniture, north adj, south adj) */
 		/* "NONE" means that door does not exist for the given state */
@@ -280,6 +280,6 @@ public class CoffeeMaker2 {
 			room.setSouthDoor(adj_furn_array[index + 3]);	
 		}
 
-		return room;
+		return 1;
 	}
 }
