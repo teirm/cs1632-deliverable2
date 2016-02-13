@@ -7,6 +7,9 @@ Purpose: JUnit tests for CoffeMakerQuest2
    			  AT LEAST 3 TESTS NEED TO USE TEST STUBS
 			  */
 
+/* TO SATISFY THE REQUIREMENT ABOVE IT IS LIKELY FURNITURE
+   WILL HAVE TO BECOME ITS OWN CLASS */ 
+
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
@@ -83,7 +86,8 @@ public class CoffeeMaker2Test {
 		assertEquals(true,  input_UC & input_LC);
 	}
 
-	// This is a dummy test 
+	// This is a dummy test (TO MAKE SURE THE LIBRARIES
+   	// WORK 	
 	/*
     @Test
 	public void testEquals() {
