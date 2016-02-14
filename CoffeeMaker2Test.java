@@ -24,10 +24,6 @@ public class CoffeeMaker2Test {
 
 	// ROOM TESTS
 
-	/* A newly created room returns null if 
-	   furniture is requested. Furniture has
-	   not been set yet.
-	   */
 
 	/* A room with adj set to S
 	   returns S with adj getter */
@@ -63,7 +59,22 @@ public class CoffeeMaker2Test {
 		assertEquals(southDoor, room_a.getSouthDoor());
 	}
 
+	/* A room without northdoor set to S
+   		returns null with associated getter */	   
+	@Test
+	public void testNullNorthDoor() {
+		Room room_a = new Room();
+		assertEquals(null, room_a.getNorthDoor());
+	}	
 
+	/* A room without southdoor set to S
+   		returns null with associated getter */	   
+	@Test
+	public void testNullSouthDoor() {
+		Room room_a = new Room();
+		assertEquals(null, room_a.getSouthDoor());
+	}
+	
 
 
 
