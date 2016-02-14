@@ -22,8 +22,50 @@ public class CoffeeMaker2Test {
 
 	// INVENTORY TESTS
 
-
 	// ROOM TESTS
+
+	/* A newly created room returns null if 
+	   furniture is requested. Furniture has
+	   not been set yet.
+	   */
+
+	/* A room with adj set to S
+	   returns S with adj getter */
+	@Test
+	public void testRoomAdj() {
+		String adj = "Fishy";	
+
+		Room room_a = new Room();
+		room_a.setRoomAdj(adj);
+		
+		assertEquals(adj, room_a.getRoomAdj());
+	}	
+
+	/* A room with northdoor set to S
+   		returns S with associated getter */	   
+	@Test
+	public void testNorthDoor() {
+		String northDoor = "Ducky";
+
+		Room room_a = new Room();
+		room_a.setNorthDoor(northDoor);
+		assertEquals(northDoor, room_a.getNorthDoor());
+	}	
+
+	/* A room with southdoor set to S
+   		returns S with associated getter */	   
+	@Test
+	public void testSouthDoor() {
+		String southDoor = "Ducky";
+
+		Room room_a = new Room();
+		room_a.setSouthDoor(southDoor);
+		assertEquals(southDoor, room_a.getSouthDoor());
+	}
+
+
+
+
 
 	/* A newly created room returns null if 
 	   furniture is requested. Furniture has
@@ -49,9 +91,6 @@ public class CoffeeMaker2Test {
 
 		assertEquals(1, retVal);
 	}
-
-
-
 
 	// INPUT TESTS
 
@@ -93,7 +132,7 @@ public class CoffeeMaker2Test {
 		assertEquals(false, invalid_input);
 	}
 
-	/* Entering a element of valid input set is case insensitive
+	/* Entering an element of valid input set is case insensitive
 		and returns true */
 	@Test
 	public void testCaseInsensitivity() {
@@ -101,6 +140,16 @@ public class CoffeeMaker2Test {
 		boolean input_LC = CoffeeMaker2.check_input("s");
 
 		assertEquals(true,  input_UC & input_LC);
+	}
+
+	/* Entering invalid input is case insensitive and returns
+	  	false */
+    @Test
+	public void testInvalidCaseInsensitivity() {
+		boolean input_UC = CoffeeMaker2.check_input("z");
+		boolean input_LC = CoffeeMaker2.check_input("Z");
+
+		assertEquals(false,  input_UC & input_LC);
 	}
 
 	// This is a dummy test (TO MAKE SURE THE LIBRARIES
