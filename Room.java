@@ -8,24 +8,29 @@ public class Room {
 	
 	//setters
 
-	public void setRoomAdj(String s) {
+	public int setRoomAdj(String s) {
 		this.roomAdj = s;
+		return 1;	
 	}
 
-	public void setNorthDoor(String s) {
+	public int setNorthDoor(String s) {
 		this.northDoor = s;
+		return 1;	
 	}
 
-	public void setSouthDoor(String s) {
+	public int setSouthDoor(String s) {
 		this.southDoor = s;
+		return 1;	
 	}
 
-	public void setFurniture(String s) {
+	public int setFurniture(String s) {
 		this.furniture = s;
+		return 1;	
 	}
 
-	public void setItem(String s) {
+	public int setItem(String s) {
 		this.item = s;
+		return 1;	
 	}
 
 
