@@ -13,13 +13,12 @@ Purpose: JUnit tests for CoffeMakerQuest2
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
+import org.mockito.Mock;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 public class CoffeeMaker2Test {
-
-
 
 	// INVENTORY TESTS
 
@@ -35,6 +34,24 @@ public class CoffeeMaker2Test {
 		Room room_a = new Room();
 		assertNull(room_a.getFurniture());
 	}
+
+	/* Room in position less than total number of game states
+	   should be filled with doors items and furniture */
+	@Test
+	public void testCreateRoom() {
+		int room_pos = 2;
+		int total_rooms = 6;
+
+		// So the example LinkedListTest code given by Bill does the mocking with a 
+		// slightly different syntax.  I think this works due to the above imports
+		// however some testing on the testing (meta-testing :P ) needs to be done
+		int retVal = CoffeeMaker2.create_room(room_pos, total_rooms, mock(Room.class));
+
+		assertEquals(1, retVal);
+	}
+
+
+
 
 	// INPUT TESTS
 
