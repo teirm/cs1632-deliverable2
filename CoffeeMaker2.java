@@ -22,7 +22,10 @@ public class CoffeeMaker2 {
 		String item;
 
 		Scanner sc;	
+		
+		Room room_to_search;	
 		Room[] game_states;
+		
 		ArrayList<String> inventory;			
 
 		current_pos = 0;
@@ -58,6 +61,7 @@ public class CoffeeMaker2 {
 				
 				} else if (user_input.equals("L")) {
 					System.out.printf("Searching room\n");
+					room_to_search = game_states[current_pos];		
 					item = search_room(current_pos, game_states); 	
 					
 					if (item == null) { 
@@ -190,14 +194,11 @@ public class CoffeeMaker2 {
 			"The goal of the game is to collect sugar, coffee, and cream so that you can study.\n");
 	}	
 
-	public static String search_room(int curr_pos, Room[] states) {
-
-		Room curr_room = states[curr_pos];
+	public static String search_room(Room curr_room) {
 		return curr_room.getItem();
-	
 	}
 
-	public static void display_room(int curr_pos, Room[] states) {
+	public static int display_room(int curr_pos, Room[] states) {
 
 		Room curr_room = states[curr_pos];
 		
@@ -209,7 +210,9 @@ public class CoffeeMaker2 {
 
 		if (curr_room.getSouthDoor() != null) {
 			System.out.printf("A %s door leads South.\n", curr_room.getSouthDoor());
-		}		
+		}
+
+		return 1;
 	}
 
 	public static boolean check_input(String in) {
