@@ -23,6 +23,8 @@ public class CoffeeMaker2Test {
 
 	// INVENTORY TESTS
 
+	/* An empty inventory returns 0 indicating that user
+	   has not acquired any items */ 
 	@Test
 	public void testDisplayEmptyInventory() {
 		
@@ -33,6 +35,8 @@ public class CoffeeMaker2Test {
 		assertEquals(0, ret_val);
 	}
 
+	/* An inventory returns 1 indicating that user
+	   has acquired ONLY Coffee */ 
 	@Test
 	public void testDisplayCoffeeInventory() {
 		
@@ -42,7 +46,9 @@ public class CoffeeMaker2Test {
 		ret_val = CoffeeMaker2.display_inventory(coffee_inv);
 		assertEquals(1, ret_val);
 	}
-
+		
+	/* An inventory returns 2 indicating that user
+	   has acquired ONLY Cream */ 
 	@Test
 	public void testDisplayCreamInventory() {
 		int ret_val;
@@ -52,6 +58,8 @@ public class CoffeeMaker2Test {
 		assertEquals(2, ret_val);
 	}
 
+	/* An inventory returns 4 indicating that user
+	   has acquired ONLY Sugar */ 
 	@Test
 	public void testDisplaySugarInventory() {
 		int ret_val;
@@ -61,6 +69,9 @@ public class CoffeeMaker2Test {
 		assertEquals(4, ret_val);
 	}
 
+
+	/* An inventory returns 5 indicating that user
+	   has acquired ONLY Coffee and Sugar */ 
 	@Test
 	public void testDisplayCoffeeSugarInventory() {
 		int ret_val;
@@ -71,6 +82,8 @@ public class CoffeeMaker2Test {
 		assertEquals(5, ret_val);
 	}
 
+	/* An inventory returns 5 indicating that user
+	   has acquired ONLY Coffee and Cream */ 
 	@Test
 	public void testDisplayCoffeeCreamInventory() {
 		int ret_val;
@@ -81,6 +94,8 @@ public class CoffeeMaker2Test {
 		assertEquals(3, ret_val);
 	}
 
+	/* An inventory returns 6 indicating that user
+	   has acquired ONLY Sugar and Cream */ 
 	@Test
 	public void testDisplaySugarCreamInventory() {
 		int ret_val;
@@ -91,6 +106,8 @@ public class CoffeeMaker2Test {
 		assertEquals(6, ret_val);
 	}
 
+	/* An inventory returns 7 indicating that user
+	   has acquired All three items (Coffee, Sugar, Cream) */ 
 	@Test
 	public void testDisplayFullInventory() {
 		int ret_val;
@@ -102,6 +119,8 @@ public class CoffeeMaker2Test {
 		assertEquals(7, ret_val);
 	}
 
+	/* An empty bag if contents are drunk should return
+	   0 */
 	@Test
 	public void testProcessEmptyBag() {
 		int ret_val;
@@ -109,6 +128,8 @@ public class CoffeeMaker2Test {
 		assertEquals(0, ret_val);
 	}
 
+	/* A full bag if contents are drunk should return
+	   1 */
 	@Test
 	public void testFullBag() {
 		int ret_val;
@@ -116,6 +137,7 @@ public class CoffeeMaker2Test {
 		assertEquals(1, ret_val);
 	}
 
+	/* A negative bag returns -1 */
 	@Test
 	public void testNegativeBag() {
 		int ret_val;
@@ -123,6 +145,7 @@ public class CoffeeMaker2Test {
 		assertEquals(-1, ret_val);
 	}
 
+	/* A bag too large returns -1 */
 	@Test
 	public void testOverSizedBag() {
 		int ret_val;
@@ -132,6 +155,9 @@ public class CoffeeMaker2Test {
 
 	// MOVEMENT TESTS
 
+	/* Moving north when in between the end points is valid 
+	   and should return true. The index for these rooms
+	   is less than the max number of rooms */
 	@Test
 	public void testNorthStep() {
 		boolean ret_val;
@@ -139,6 +165,9 @@ public class CoffeeMaker2Test {
 		assertEquals(true, ret_val);
 	}
 
+	/* Moving north when at the final state is not
+	   allowed and should return false.  Room indexing
+	   starts at 0 */ 
 	@Test
 	public void testBlockedNorth() {
 		boolean ret_val;
@@ -146,6 +175,8 @@ public class CoffeeMaker2Test {
 		assertEquals(false, ret_val);
 	}
 
+	/* Being in a state beyond the max number of states
+	   is not allowed and should return false */
 	@Test
 	public void testTooFarNorth() {
 		boolean ret_val;
@@ -153,6 +184,9 @@ public class CoffeeMaker2Test {
 		assertEquals(false, ret_val);
 	}
 
+	/* Moving south when in between the end points is
+	   valid and should return room  The index for these
+	   rooms is greater than 0 */
 	@Test
 	public void testSouthStep() {
 		boolean ret_val;
@@ -160,6 +194,9 @@ public class CoffeeMaker2Test {
 		assertEquals(true, ret_val);
 	}
 
+	/* Moving south when at the inital state is not allowed
+	   and should return false.  Room indexing starts at
+	   0 */
 	@Test
 	public void testBlockedSouth() {
 		boolean ret_val;
@@ -167,6 +204,8 @@ public class CoffeeMaker2Test {
 		assertEquals(false, ret_val);
 	}
 
+	/* Moving south when beyond the inital state is not allowed
+	   and should return false */
 	@Test
 	public void testTooFarSouth() {
 		boolean ret_val;
