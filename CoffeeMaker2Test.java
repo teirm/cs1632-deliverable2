@@ -22,8 +22,9 @@ public class CoffeeMaker2Test {
 
 	// INVENTORY TESTS
 
-	// ROOM TESTS
 
+
+	// ROOM TESTS
 
 	/* A room with adj set to S
 	   returns S with adj getter */
@@ -98,8 +99,86 @@ public class CoffeeMaker2Test {
 
 		assertEquals(item, room_a.getItem());
 	}
-				
 
+	/* If a room has a searchable item, search_room 
+	   returns the searchable item */
+	@Test
+	public void testSearchRoomWithItem() {
+		String item;	
+		Room mock_room = mock(Room.class);
+		when(mock_room.getItem()).thenReturn("Cream");
+		item = CoffeeMaker2.search_room(mock_room); 
+		assertEquals("Cream", item);		
+	}
+
+	/* If a room item is not set (ergo null), search_room
+	   returns null */
+	/* This test feels fishy */
+	@Test
+	public void testSearchRoomWithoutItem() {
+		String item;	
+		Room mock_room = mock(Room.class);
+		when(mock_room.getItem()).thenReturn(null);
+		item = CoffeeMaker2.search_room(mock_room); 
+		assertNull(item);	
+	}
+
+	/* display room returns 1 if no door is present in room */
+	@Test
+	public void testDoorlessRoom() {
+		int room_status;	
+
+		Room mock_room = mock(Room.class);
+		when(mock_room.getRoomAdj()).thenReturn("Fishy");
+		when(mock_room.getFurniture()).thenReturn("kitty!");
+		when(mock_room.getNorthDoor()).thenReturn(null);
+		when(mock_room.getSouthDoor()).thenReturn(null);
+		room_status = CoffeeMaker2.display_room(mock_room);
+		assertEquals(1, room_status);
+	}
+
+	/* display room returns 3 if ONLY north door is present in room */
+	@Test
+	public void testNorthOnlyRoom() {
+		int room_status;	
+
+		Room mock_room = mock(Room.class);
+		when(mock_room.getRoomAdj()).thenReturn("Fishy");
+		when(mock_room.getFurniture()).thenReturn("kitty!");
+		when(mock_room.getNorthDoor()).thenReturn("Quaint");
+		when(mock_room.getSouthDoor()).thenReturn(null);
+		room_status = CoffeeMaker2.display_room(mock_room);
+		assertEquals(3, room_status);
+	}
+
+
+	/* display room returns 5 if ONLY south door is present in room */
+	@Test
+	public void testSouthOnlyRoom() {
+		int room_status;	
+
+		Room mock_room = mock(Room.class);
+		when(mock_room.getRoomAdj()).thenReturn("Fishy");
+		when(mock_room.getFurniture()).thenReturn("kitty!");
+		when(mock_room.getNorthDoor()).thenReturn(null);
+		when(mock_room.getSouthDoor()).thenReturn("Barbaric");
+		room_status = CoffeeMaker2.display_room(mock_room);
+		assertEquals(5, room_status);
+	}
+	
+	/* display room returns 5 if ONLY south door is present in room */
+	@Test
+	public void testNorthSouthRoom() {
+		int room_status;	
+
+		Room mock_room = mock(Room.class);
+		when(mock_room.getRoomAdj()).thenReturn("Fishy");
+		when(mock_room.getFurniture()).thenReturn("kitty!");
+		when(mock_room.getNorthDoor()).thenReturn("Quaint");
+		when(mock_room.getSouthDoor()).thenReturn("Barbaric");
+		room_status = CoffeeMaker2.display_room(mock_room);
+		assertEquals(7, room_status);
+	}
 
 	/* A newly created room returns null if 
 	   furniture is requested. Furniture has
