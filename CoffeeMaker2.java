@@ -22,7 +22,8 @@ public class CoffeeMaker2 {
 		String item;
 
 		Scanner sc;	
-		
+	
+		Room curr_room;	
 		Room room_to_search;	
 		Room[] game_states;
 		
@@ -40,7 +41,8 @@ public class CoffeeMaker2 {
 
 		while (keep_going) {
 
-			display_room(current_pos, game_states);
+			curr_room = game_states[current_pos];
+			display_room(curr_room);
 
 			System.out.printf("\n INSTRUCTIONS (N, S, L, I, H, D) >\n");		
 			
@@ -63,7 +65,6 @@ public class CoffeeMaker2 {
 					System.out.printf("Searching room\n");
 					room_to_search = game_states[current_pos];		
 					item = search_room(room_to_search); 	
-					
 					if (item == null) { 
 						System.out.printf("You don't see anything out of the ordinary.\n");
 					} else if (inventory.contains(item)) {
@@ -187,32 +188,38 @@ public class CoffeeMaker2 {
 	}	
 
 
-	public static void display_instructions() {
+	public static int display_instructions() {
 
 		System.out.printf("Instructions for Coffee Maker Quest -\n" + 
 			"You are a brave student trying to study for finals, but you need caffeine.\n" + 
 			"The goal of the game is to collect sugar, coffee, and cream so that you can study.\n");
+	
+		return 1;	
 	}	
 
 	public static String search_room(Room curr_room) {
 		return curr_room.getItem();
 	}
 
-	public static int display_room(int curr_pos, Room[] states) {
+	public static int display_room(Room curr_room) {
+	
+		int room_status = 0;
 
-		Room curr_room = states[curr_pos];
-		
 		System.out.printf("\nYou see a %s room.\nIt has a %s.\n", curr_room.getRoomAdj(), curr_room.getFurniture());
+		
+		room_status+=1;
 
 		if (curr_room.getNorthDoor() != null) {
 			System.out.printf("A %s door leads North.\n", curr_room.getNorthDoor());
+			room_status+=2;	
 		}
 
 		if (curr_room.getSouthDoor() != null) {
 			System.out.printf("A %s door leads South.\n", curr_room.getSouthDoor());
+			room_status+=3;
 		}
 
-		return 1;
+		return room_status;
 	}
 
 	public static boolean check_input(String in) {
