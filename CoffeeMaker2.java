@@ -129,6 +129,7 @@ public class CoffeeMaker2 {
 				break;	
 			default:
 				System.out.printf("BROKEN\n");
+				status = -1;
 				break;
 		}
 
@@ -184,7 +185,7 @@ public class CoffeeMaker2 {
 			System.out.printf("YOU HAVE NO SUGAR\n");
 		}
 
-		return has_coffee | has_cream | has_sugar;
+		return has_coffee + has_cream + has_sugar;
 	}	
 
 
@@ -216,7 +217,7 @@ public class CoffeeMaker2 {
 
 		if (curr_room.getSouthDoor() != null) {
 			System.out.printf("A %s door leads South.\n", curr_room.getSouthDoor());
-			room_status+=3;
+			room_status+=4;
 		}
 
 		return room_status;

@@ -13,6 +13,7 @@ Purpose: JUnit tests for CoffeMakerQuest2
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
+import java.util.ArrayList;
 import org.mockito.Mock;
 import org.junit.After;
 import org.junit.Before;
@@ -22,6 +23,149 @@ public class CoffeeMaker2Test {
 
 	// INVENTORY TESTS
 
+	@Test
+	public void testDisplayEmptyInventory() {
+		
+		int ret_val;	
+		ArrayList<String> empty_inv = new ArrayList<String>();
+			
+		ret_val = CoffeeMaker2.display_inventory(empty_inv);
+		assertEquals(0, ret_val);
+	}
+
+	@Test
+	public void testDisplayCoffeeInventory() {
+		
+		int ret_val;
+		ArrayList<String> coffee_inv = new ArrayList<String>();
+		coffee_inv.add("Coffee");		
+		ret_val = CoffeeMaker2.display_inventory(coffee_inv);
+		assertEquals(1, ret_val);
+	}
+
+	@Test
+	public void testDisplayCreamInventory() {
+		int ret_val;
+		ArrayList<String> cream_inv = new ArrayList<String>();
+		cream_inv.add("Cream");		
+		ret_val = CoffeeMaker2.display_inventory(cream_inv);
+		assertEquals(2, ret_val);
+	}
+
+	@Test
+	public void testDisplaySugarInventory() {
+		int ret_val;
+		ArrayList<String> sugar_inv = new ArrayList<String>();
+		sugar_inv.add("Sugar");		
+		ret_val = CoffeeMaker2.display_inventory(sugar_inv);
+		assertEquals(4, ret_val);
+	}
+
+	@Test
+	public void testDisplayCoffeeSugarInventory() {
+		int ret_val;
+		ArrayList<String> inv = new ArrayList<String>();
+		inv.add("Sugar");
+		inv.add("Coffee");		
+		ret_val = CoffeeMaker2.display_inventory(inv);
+		assertEquals(5, ret_val);
+	}
+
+	@Test
+	public void testDisplayCoffeeCreamInventory() {
+		int ret_val;
+		ArrayList<String> inv = new ArrayList<String>();
+		inv.add("Cream");
+		inv.add("Coffee");		
+		ret_val = CoffeeMaker2.display_inventory(inv);
+		assertEquals(3, ret_val);
+	}
+
+	@Test
+	public void testDisplaySugarCreamInventory() {
+		int ret_val;
+		ArrayList<String> inv = new ArrayList<String>();
+		inv.add("Sugar");
+		inv.add("Cream");		
+		ret_val = CoffeeMaker2.display_inventory(inv);
+		assertEquals(6, ret_val);
+	}
+
+	@Test
+	public void testDisplayFullInventory() {
+		int ret_val;
+		ArrayList<String> inv = new ArrayList<String>();
+		inv.add("Sugar");
+		inv.add("Cream");		
+		inv.add("Coffee");	
+		ret_val = CoffeeMaker2.display_inventory(inv);
+		assertEquals(7, ret_val);
+	}
+
+	@Test
+	public void testProcessEmptyBag() {
+		int ret_val;
+		ret_val = CoffeeMaker2.process_bag(0);
+		assertEquals(0, ret_val);
+	}
+
+	@Test
+	public void testFullBag() {
+		int ret_val;
+		ret_val = CoffeeMaker2.process_bag(7);
+		assertEquals(1, ret_val);
+	}
+
+	@Test
+	public void testNegativeBag() {
+		int ret_val;
+		ret_val = CoffeeMaker2.process_bag(-20);
+		assertEquals(-1, ret_val);
+	}
+
+	@Test
+	public void testOverSizedBag() {
+		int ret_val;
+		ret_val = CoffeeMaker2.process_bag(30);
+		assertEquals(-1, ret_val);
+	}	
+
+	// MOVEMENT TESTS
+
+	@Test
+	public void testNorthStep() {
+		boolean ret_val;
+		ret_val = CoffeeMaker2.move_north(3, 6);
+		assertEquals(true, ret_val);
+	}
+
+	@Test
+	public void testBlockedNorth() {
+		boolean ret_val;
+		ret_val = CoffeeMaker2.move_north(5, 6);
+		assertEquals(false, ret_val);
+	}
+
+	@Test
+	public void testTooFarNorth() {
+		boolean ret_val;
+		ret_val = CoffeeMaker2.move_north(100, 6);
+		assertEquals(false, ret_val);
+	}
+
+	@Test
+	public void testSouthStep() {
+		boolean ret_val;
+		ret_val = CoffeeMaker2.move_south(3);
+		assertEquals(true, ret_val);
+	}
+
+	@Test
+	public void testBlockedSouth() {
+		boolean ret_val;
+		ret_val = CoffeeMaker2.move_south(0);
+		assertEquals(false, ret_val);
+	}
 
 
 	// ROOM TESTS
