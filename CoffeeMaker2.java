@@ -62,7 +62,7 @@ public class CoffeeMaker2 {
 				} else if (user_input.equals("L")) {
 					System.out.printf("Searching room\n");
 					room_to_search = game_states[current_pos];		
-					item = search_room(current_pos, game_states); 	
+					item = search_room(room_to_search); 	
 					
 					if (item == null) { 
 						System.out.printf("You don't see anything out of the ordinary.\n");
