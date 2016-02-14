@@ -167,6 +167,12 @@ public class CoffeeMaker2Test {
 		assertEquals(false, ret_val);
 	}
 
+	@Test
+	public void testTooFarSouth() {
+		boolean ret_val;
+		ret_val = CoffeeMaker2.move_south(-100);
+		assertEquals(false, ret_val);
+	}
 
 	// ROOM TESTS
 
