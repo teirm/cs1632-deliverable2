@@ -74,8 +74,31 @@ public class CoffeeMaker2Test {
 		Room room_a = new Room();
 		assertEquals(null, room_a.getSouthDoor());
 	}
-	
 
+	/* A room with furniture set to F
+   		returns F with furniture getter */
+	@Test
+	public void testFurniture() {
+		String furn = "Quarter Sawn Oak Table";	
+
+		Room room_a = new Room();
+		room_a.setFurniture(furn);
+
+		assertEquals(furn, room_a.getFurniture());
+	}
+
+	/* A room with item set to I
+	   returns I with item getter */
+	@Test
+	public void testItem() {
+		String item = "Feral bag dogs";
+
+		Room room_a = new Room();
+		room_a.setItem(item);
+
+		assertEquals(item, room_a.getItem());
+	}
+				
 
 
 	/* A newly created room returns null if 
