@@ -35,7 +35,8 @@ public class CoffeeMaker2 {
 
 		inventory = new ArrayList<String>(); 
 		sc = new Scanner(System.in);
-		game_states = init_game(total_states);	
+		game_states = new Room[total_states];	
+		init_game(total_states, game_states);	
 
 		System.out.printf("Coffee Maker Quest 2.0\n");
 
@@ -236,20 +237,19 @@ public class CoffeeMaker2 {
 		return out;
 	}
 			
-	public static Room[] init_game(int state_count) {
+	public static int init_game(int state_count, Room[] game_states) {
 
 		int i;	
 		
 		Room game_room;
-		Room[] game_states = new Room[state_count];
 		
-		for (i = 0; i < state_count; i++) {
+		for (i = 0; i < game_states.length; i++) {
 			game_room = new Room();	
 			create_room(i, state_count, game_room);
 			game_states[i] = game_room;	
 		}
 	
-		return game_states;	
+		return i;	
 	}
 
 
