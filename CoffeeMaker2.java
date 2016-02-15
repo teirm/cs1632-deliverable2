@@ -49,20 +49,21 @@ public class CoffeeMaker2 {
 			
 			user_input = sc.nextLine();
 			input_sat = check_input(user_input);	
-		
+			user_input = user_input.toUpperCase();
+			
 			if (input_sat == false) {
 				System.out.printf("What?\n");
 			} else {
 			
-				if (user_input.equals("N")  || user_input.equals("n")) {
+				if (user_input.equals("N")) {
 					
 					if (move_north(current_pos, total_states)) current_pos++;
 				
-				} else if (user_input.equals("S") || user_input.equals("s")) {
+				} else if (user_input.equals("S")) {
 					
 					if (move_south(current_pos)) current_pos--;
 				
-				} else if (user_input.equals("L") || user_input.equals("l")) {
+				} else if (user_input.equals("L")) {
 					System.out.printf("Searching room\n");
 					room_to_search = game_states[current_pos];		
 					item = search_room(room_to_search); 	
@@ -77,9 +78,9 @@ public class CoffeeMaker2 {
 						inventory.add(item);
 					}
 
-				} else if (user_input.equals("I")  || user_input.equals("i")) {
+				} else if (user_input.equals("I")) {
 					bag_status = display_inventory(inventory);			
-				} else if (user_input.equals("H")  || user_input.equals("h")) {
+				} else if (user_input.equals("H")) {
 					display_instructions();	
 				} else {
 					bag_status = display_inventory(inventory);
