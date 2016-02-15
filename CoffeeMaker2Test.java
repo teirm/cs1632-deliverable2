@@ -35,6 +35,17 @@ public class CoffeeMaker2Test {
 		assertEquals(0, ret_val);
 	}
 
+	/* An inventory containing something not Coffee Sugar or
+	   Cream returns 0 */
+	@Test
+	public void testWrongItemInventory() {
+		int ret_val;
+		ArrayList<String> wrong_inv = new ArrayList<String>();
+		wrong_inv.add("Fishsticks");
+		ret_val = CoffeeMaker2.display_inventory(wrong_inv);
+		assertEquals(0, ret_val);
+	}
+
 	/* An inventory returns 1 indicating that user
 	   has acquired ONLY Coffee */ 
 	@Test
@@ -452,6 +463,38 @@ public class CoffeeMaker2Test {
 		boolean input_LC = CoffeeMaker2.check_input("Z");
 
 		assertEquals(false,  input_UC & input_LC);
+	}
+
+	// GAME INITIALIZIATION TESTS
+
+	/* If the total number of states is equal to the length of the
+	   state array the number of items added to the state array will
+	   be equal to the number of total states */
+	@Test
+	public void testValidStateCount() {
+		
+		int total_states = 4;	
+		int array_states = 4;	
+		int ret_val;	
+		
+		Room[] test_states = new Room[array_states];
+		ret_val = CoffeeMaker2.init_game(total_states, test_states);
+		assertEquals(total_states, ret_val);	
+	}
+
+	/* If the total number of states is greater than the state array
+	   length, the number of items added (the ret val) will be the same
+	   as the length of the array */
+	@Test
+	public void testStateArrayTooSmall() {
+
+		int total_states = 4;
+		int array_states = 3;
+		int ret_val;
+
+		Room[] test_states = new Room[array_states];
+		ret_val = CoffeeMaker2.init_game(total_states, test_states);
+		assertEquals(array_states, ret_val);
 	}
 
 	// This is a dummy test (TO MAKE SURE THE LIBRARIES
