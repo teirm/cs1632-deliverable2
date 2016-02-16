@@ -497,23 +497,6 @@ public class CoffeeMaker2Test {
 		assertEquals(array_states, ret_val);
 	}
 
-	// This is a dummy test (TO MAKE SURE THE LIBRARIES
-   	// WORK 	
-	/*
-    @Test
-	public void testEquals() {
-		//Preconditions - a and b reference same object
-		Room a = new Room();
-
-		// Execution steps - reference a from new variable 
-		Room b = a;
-
-		// Postconditions / Expected behavior - assert that
-		// a and b are the same
-		assertSame(a, b);
-	}
-	*/
-
 
 	// This main method runs our test suite (I think this is a test suite)
 	public static void main(String[] args) {
