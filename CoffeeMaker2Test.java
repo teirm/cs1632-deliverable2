@@ -3,12 +3,10 @@ Date: 12 February 2016
 Purpose: JUnit tests for CoffeMakerQuest2 
 */
 
-/* IMPORTANT: AT LEAST 3 TESTS NEED TO USE TEST DOUBLES
-   			  AT LEAST 3 TESTS NEED TO USE TEST STUBS
-			  */
-
-/* TO SATISFY THE REQUIREMENT ABOVE IT IS LIKELY FURNITURE
-   WILL HAVE TO BECOME ITS OWN CLASS */ 
+/* 
+	IMPORTANT: AT LEAST 3 TESTS NEED TO USE TEST DOUBLES
+	AT LEAST 3 TESTS NEED TO USE TEST STUBS
+*/
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -23,8 +21,11 @@ public class CoffeeMaker2Test {
 
 	// INVENTORY TESTS
 
-	/* An empty inventory returns 0 indicating that user
-	   has not acquired any items */ 
+	/* 
+		An empty inventory should never display that the user has any items.
+		Test the empty inventory and make sure that it returns 0 indicating
+		that the user has not acquired any items.
+	*/ 
 	@Test
 	public void testDisplayEmptyInventory() {
 		
@@ -35,8 +36,11 @@ public class CoffeeMaker2Test {
 		assertEquals(0, ret_val);
 	}
 
-	/* An inventory containing something not Coffee Sugar or
-	   Cream returns 0 */
+	/* 
+		If an inventory contains somthing other then Coffee, Sugar or Cream
+		should should return 0. Add "Fishsticks" to the inventory and test
+		it. The test whould return 0.
+	*/
 	@Test
 	public void testWrongItemInventory() {
 		int ret_val;
@@ -46,8 +50,11 @@ public class CoffeeMaker2Test {
 		assertEquals(0, ret_val);
 	}
 
-	/* An inventory returns 1 indicating that user
-	   has acquired ONLY Coffee */ 
+	/* 
+		Add only Coffee to the inventory and test the inventory.
+		The test should return 1 indicating that the user has 
+		acquired ONLY Coffee and no other items.
+  	*/ 
 	@Test
 	public void testDisplayCoffeeInventory() {
 		
@@ -58,8 +65,11 @@ public class CoffeeMaker2Test {
 		assertEquals(1, ret_val);
 	}
 		
-	/* An inventory returns 2 indicating that user
-	   has acquired ONLY Cream */ 
+	/*
+		Add only Cream to the inventory and test it.
+		The test should return 2 indicating that the
+		user has acquired ONLY Cream. 
+    */ 
 	@Test
 	public void testDisplayCreamInventory() {
 		int ret_val;
@@ -69,8 +79,11 @@ public class CoffeeMaker2Test {
 		assertEquals(2, ret_val);
 	}
 
-	/* An inventory returns 4 indicating that user
-	   has acquired ONLY Sugar */ 
+	/* 
+		Add only Sugar to the inventory and test the inventory.
+		The test should return 4 indicating that the user has 
+		acquired ONLY Sugar and no other items.
+   	*/ 
 	@Test
 	public void testDisplaySugarInventory() {
 		int ret_val;
@@ -80,9 +93,12 @@ public class CoffeeMaker2Test {
 		assertEquals(4, ret_val);
 	}
 
-
-	/* An inventory returns 5 indicating that user
-	   has acquired ONLY Coffee and Sugar */ 
+ 
+	/* 
+		Add only Coffee to the inventory and test the inventory.
+		The test should return 1 indicating that the user has 
+		acquired ONLY Coffee and no other items.
+   	*/ 
 	@Test
 	public void testDisplayCoffeeSugarInventory() {
 		int ret_val;
@@ -93,8 +109,11 @@ public class CoffeeMaker2Test {
 		assertEquals(5, ret_val);
 	}
 
-	/* An inventory returns 5 indicating that user
-	   has acquired ONLY Coffee and Cream */ 
+	/* 
+		Add only Coffee and Cream to the inventory and test the inventory.
+		The test should return 3 indicating that the user has 
+		acquired ONLY Coffee and Cream and no other items.
+	*/ 
 	@Test
 	public void testDisplayCoffeeCreamInventory() {
 		int ret_val;
@@ -105,8 +124,11 @@ public class CoffeeMaker2Test {
 		assertEquals(3, ret_val);
 	}
 
-	/* An inventory returns 6 indicating that user
-	   has acquired ONLY Sugar and Cream */ 
+	/* 
+		Add only Sugar and Cream to the inventory and test the inventory.
+		The test should return 6 indicating that the user has 
+		acquired ONLY Sugar and Cream and no other items.
+   	*/ 
 	@Test
 	public void testDisplaySugarCreamInventory() {
 		int ret_val;
@@ -117,8 +139,11 @@ public class CoffeeMaker2Test {
 		assertEquals(6, ret_val);
 	}
 
-	/* An inventory returns 7 indicating that user
-	   has acquired All three items (Coffee, Sugar, Cream) */ 
+	/* 
+		Add Coffee, Cream, and Sugar to the inventory and test the inventory.
+		The test should return 7 indicating that the user has 
+		acquired ONLY Coffee, Cream, and Sugar and no other items.   	
+	*/ 
 	@Test
 	public void testDisplayFullInventory() {
 		int ret_val;
@@ -130,8 +155,10 @@ public class CoffeeMaker2Test {
 		assertEquals(7, ret_val);
 	}
 
-	/* An empty bag if contents are drunk should return
-	   0 */
+	/* 
+		Test if when the bag is empty and the contents are drunk
+		that that it returns 0.
+   	*/
 	@Test
 	public void testProcessEmptyBag() {
 		int ret_val;
@@ -139,8 +166,10 @@ public class CoffeeMaker2Test {
 		assertEquals(0, ret_val);
 	}
 
-	/* A full bag if contents are drunk should return
-	   1 */
+	/* 
+		Test if when the bag is full and the contents are drunk that 
+		it returns 1. 
+   	*/
 	@Test
 	public void testFullBag() {
 		int ret_val;
@@ -148,7 +177,10 @@ public class CoffeeMaker2Test {
 		assertEquals(1, ret_val);
 	}
 
-	/* A negative bag returns -1 */
+	/* 
+		The bag should never be negative.
+		Test if the bag is negative, if it is return -1. 
+	*/
 	@Test
 	public void testNegativeBag() {
 		int ret_val;
@@ -156,7 +188,10 @@ public class CoffeeMaker2Test {
 		assertEquals(-1, ret_val);
 	}
 
-	/* A bag too large returns -1 */
+	/* 
+		The bag should never be over-sized.
+		Test if the bag is over-sized, if it is return -1. 
+	*/
 	@Test
 	public void testOverSizedBag() {
 		int ret_val;
@@ -166,9 +201,11 @@ public class CoffeeMaker2Test {
 
 	// MOVEMENT TESTS
 
-	/* Moving north when in between the end points is valid 
-	   and should return true. The index for these rooms
-	   is less than the max number of rooms */
+	/* 
+		Moving north when in between the end points is valid 
+	  	and should return true. The index for these rooms
+	  	is less than the max number of rooms 
+   */
 	@Test
 	public void testNorthStep() {
 		boolean ret_val;
@@ -176,9 +213,11 @@ public class CoffeeMaker2Test {
 		assertEquals(true, ret_val);
 	}
 
-	/* Moving north when at the final state is not
-	   allowed and should return false.  Room indexing
-	   starts at 0 */ 
+	/* 
+		Moving north when at the final state is not
+	   	allowed and should return false.  Room indexing
+	   	starts at 0 
+   	*/ 
 	@Test
 	public void testBlockedNorth() {
 		boolean ret_val;
@@ -186,8 +225,10 @@ public class CoffeeMaker2Test {
 		assertEquals(false, ret_val);
 	}
 
-	/* Being in a state beyond the max number of states
-	   is not allowed and should return false */
+	/* 
+		Being in a state beyond the max number of states
+		is not allowed and should return false 
+   	*/
 	@Test
 	public void testTooFarNorth() {
 		boolean ret_val;
@@ -195,9 +236,11 @@ public class CoffeeMaker2Test {
 		assertEquals(false, ret_val);
 	}
 
-	/* Moving south when in between the end points is
-	   valid and should return room  The index for these
-	   rooms is greater than 0 */
+	/*
+		Moving south when in between the end points is
+   		valid and should return room  The index for these
+	  	rooms is greater than 0 
+	*/
 	@Test
 	public void testSouthStep() {
 		boolean ret_val;
@@ -205,9 +248,11 @@ public class CoffeeMaker2Test {
 		assertEquals(true, ret_val);
 	}
 
-	/* Moving south when at the inital state is not allowed
-	   and should return false.  Room indexing starts at
-	   0 */
+	/* 
+		Moving south when at the inital state is not allowed
+		and should return false.  Room indexing starts at
+		0 
+   	*/
 	@Test
 	public void testBlockedSouth() {
 		boolean ret_val;
@@ -215,8 +260,10 @@ public class CoffeeMaker2Test {
 		assertEquals(false, ret_val);
 	}
 
-	/* Moving south when beyond the inital state is not allowed
-	   and should return false */
+	/* 
+		Moving south when beyond the inital state is not allowed
+		and should return false 
+	*/
 	@Test
 	public void testTooFarSouth() {
 		boolean ret_val;
@@ -226,8 +273,10 @@ public class CoffeeMaker2Test {
 
 	// ROOM TESTS
 
-	/* A room with adj set to S
-	   returns S with adj getter */
+	/* 
+		A room adj should be valid.
+		A room with adj set to S returns S with the adj getter. 
+   	*/
 	@Test
 	public void testRoomAdj() {
 		String adj = "Fishy";	
@@ -238,8 +287,9 @@ public class CoffeeMaker2Test {
 		assertEquals(adj, room_a.getRoomAdj());
 	}	
 
-	/* A room with northdoor set to S
-   		returns S with associated getter */	   
+	/* 
+		A room with a northdoor set to S returns S with the associated getter
+	*/	   
 	@Test
 	public void testNorthDoor() {
 		String northDoor = "Ducky";
@@ -249,8 +299,9 @@ public class CoffeeMaker2Test {
 		assertEquals(northDoor, room_a.getNorthDoor());
 	}	
 
-	/* A room with southdoor set to S
-   		returns S with associated getter */	   
+	/* 
+		A room with southdoor set to S returns S with associated getter
+	*/	   
 	@Test
 	public void testSouthDoor() {
 		String southDoor = "Ducky";
@@ -260,24 +311,30 @@ public class CoffeeMaker2Test {
 		assertEquals(southDoor, room_a.getSouthDoor());
 	}
 
-	/* A room without northdoor set to S
-   		returns null with associated getter */	   
+	/* 
+		A room without northdoor set to S
+   		returns null with associated getter 
+	*/	   
 	@Test
 	public void testNullNorthDoor() {
 		Room room_a = new Room();
 		assertEquals(null, room_a.getNorthDoor());
 	}	
 
-	/* A room without southdoor set to S
-   		returns null with associated getter */	   
+	/* 
+		A room without southdoor set to S
+   		returns null with associated getter 
+	*/	   
 	@Test
 	public void testNullSouthDoor() {
 		Room room_a = new Room();
 		assertEquals(null, room_a.getSouthDoor());
 	}
 
-	/* A room with furniture set to F
-   		returns F with furniture getter */
+	/* 	
+		A room with furniture set to F
+   		returns F with furniture getter 
+	*/
 	@Test
 	public void testFurniture() {
 		String furn = "Quarter Sawn Oak Table";	
@@ -288,8 +345,10 @@ public class CoffeeMaker2Test {
 		assertEquals(furn, room_a.getFurniture());
 	}
 
-	/* A room with item set to I
-	   returns I with item getter */
+	/* 
+		A room with item set to I
+		returns I with item getter 
+   	*/
 	@Test
 	public void testItem() {
 		String item = "Feral bag dogs";
@@ -300,8 +359,10 @@ public class CoffeeMaker2Test {
 		assertEquals(item, room_a.getItem());
 	}
 
-	/* If a room has a searchable item, search_room 
-	   returns the searchable item */
+	/* 
+		Rooms with items should be able to have the items be found.
+		If a room has a searchable item, search_room returns the searchable item
+	*/
 	@Test
 	public void testSearchRoomWithItem() {
 		String item;	
@@ -311,8 +372,10 @@ public class CoffeeMaker2Test {
 		assertEquals("Cream", item);		
 	}
 
-	/* If a room item is not set (ergo null), search_room
-	   returns null */
+	/* 
+		Null rooms are not valid. 
+		If a room item is not set (ergo null), search_room returns null 
+   	*/
 	/* This test feels fishy */
 	@Test
 	public void testSearchRoomWithoutItem() {
@@ -323,7 +386,10 @@ public class CoffeeMaker2Test {
 		assertNull(item);	
 	}
 
-	/* display room returns 1 if no door is present in room */
+	/* 
+		There should be doors to go through. 
+		Display room returns 1 if no door is present in room
+	*/
 	@Test
 	public void testDoorlessRoom() {
 		int room_status;	
@@ -337,7 +403,10 @@ public class CoffeeMaker2Test {
 		assertEquals(1, room_status);
 	}
 
-	/* display room returns 3 if ONLY north door is present in room */
+	/*
+		When in the Southern most room there should be ONLY a North door.
+		Display room returns 3 if ONLY north door is present in room 
+	*/
 	@Test
 	public void testNorthOnlyRoom() {
 		int room_status;	
@@ -352,7 +421,10 @@ public class CoffeeMaker2Test {
 	}
 
 
-	/* display room returns 5 if ONLY south door is present in room */
+	/*
+		When in the the most Northern room there should be ONLY a South door.
+		display room returns 5 if ONLY south door is present in room
+	*/
 	@Test
 	public void testSouthOnlyRoom() {
 		int room_status;	
@@ -366,7 +438,10 @@ public class CoffeeMaker2Test {
 		assertEquals(5, room_status);
 	}
 	
-	/* display room returns 5 if ONLY south door is present in room */
+	/*
+		When in a room that is NOT the most Northern or Southern door
+		then there should be a North door and a South door.
+	*/
 	@Test
 	public void testNorthSouthRoom() {
 		int room_status;	
@@ -380,18 +455,21 @@ public class CoffeeMaker2Test {
 		assertEquals(7, room_status);
 	}
 
-	/* A newly created room returns null if 
-	   furniture is requested. Furniture has
-	   not been set yet.
-	   */
+	/* 
+		A newly created room returns null if 
+		furniture is requested. Furniture has
+		not been set yet.
+    */
 	@Test
 	public void testEmptyRoom() {
 		Room room_a = new Room();
 		assertNull(room_a.getFurniture());
 	}
 
-	/* Room in position less than total number of game states
-	   should be filled with doors items and furniture */
+	/*
+		Room in position less than total number of game states
+	   	should be filled with doors items and furniture
+   	*/
 	@Test
 	public void testCreateRoom() {
 		int room_pos = 2;
@@ -407,8 +485,10 @@ public class CoffeeMaker2Test {
 
 	// INPUT TESTS
 
-	/* Entering 'N', 'S', 'L', 'I', 'H', 'D' (VALID INPUT)
-	   returns true */
+	/* 
+		The game should take valid input. 'N', 'S', 'L', 'I', 'H', 'D'
+		are valid input and should return true 
+	*/
 	@Test
 	public void testInput_N() {
 		boolean input_1 = CoffeeMaker2.check_input("N");
@@ -421,32 +501,41 @@ public class CoffeeMaker2Test {
 		assertEquals(true, input_1);
 	}
 
-	/* Entering anything besides 'N', 'S', 'L', 'I', 'H', 'D'
-	   returns false */
+	/*
+		The game should not accept invalid input which is
+		anything besides 'N', 'S', 'L', 'I', 'H', 'D'.
+		The test should return false. 
+   	*/
 	@Test
 	public void testInvalidInput() {
 		boolean invalid_input = CoffeeMaker2.check_input("Q");
 		assertEquals(false, invalid_input);
 	}
 
-	/* Entering a string where first character does not match
-	   element of valid input set returns false */
+	/*
+		Entering a string where first character does not match
+	   	element of valid input set returns false 
+   	*/
 	@Test
 	public void testInvalidString() {
 		boolean invalid_input = CoffeeMaker2.check_input("Zustandssumme");
 		assertEquals(false, invalid_input);
 	}	
 
-	/* Entering a string where the first character is an
-	   element of the valid input set returns false */
+	/*	
+		Entering a string where the first character is an
+		element of the valid input set returns false 
+	*/
 	@Test
 	public void testFirstCharString() {
 		boolean invalid_input = CoffeeMaker2.check_input("Daenerys");
 		assertEquals(false, invalid_input);
 	}
 
-	/* Entering an element of valid input set is case insensitive
-		and returns true */
+	/*
+		Entering an element of valid input set is case insensitive
+		and returns true 
+	*/
 	@Test
 	public void testCaseInsensitivity() {
 		boolean input_UC = CoffeeMaker2.check_input("S");
@@ -455,8 +544,10 @@ public class CoffeeMaker2Test {
 		assertEquals(true,  input_UC & input_LC);
 	}
 
-	/* Entering invalid input is case insensitive and returns
-	  	false */
+	/*
+		Entering invalid input is case insensitive and returns
+	  	false 
+	*/
     @Test
 	public void testInvalidCaseInsensitivity() {
 		boolean input_UC = CoffeeMaker2.check_input("z");
@@ -467,9 +558,11 @@ public class CoffeeMaker2Test {
 
 	// GAME INITIALIZIATION TESTS
 
-	/* If the total number of states is equal to the length of the
-	   state array the number of items added to the state array will
-	   be equal to the number of total states */
+	/* 
+		If the total number of states is equal to the length of the
+   		state array the number of items added to the state array will
+   		be equal to the number of total states
+	*/
 	@Test
 	public void testValidStateCount() {
 		
@@ -482,9 +575,11 @@ public class CoffeeMaker2Test {
 		assertEquals(total_states, ret_val);	
 	}
 
-	/* If the total number of states is greater than the state array
-	   length, the number of items added (the ret val) will be the same
-	   as the length of the array */
+	/*
+		If the total number of states is greater than the state array
+   		length, the number of items added (the ret val) will be the same
+		as the length of the array 
+	*/
 	@Test
 	public void testStateArrayTooSmall() {
 
